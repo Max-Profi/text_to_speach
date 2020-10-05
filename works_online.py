@@ -2,17 +2,19 @@
 gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate's text-to-speech API. Write spoken mp3 data to a file, a file-like object (bytestring) for further audio manipulation, or stdout.
 
 https://pypi.org/project/gTTS/
+
+On Windows you have to run VS Code as administrator. And it takes a long time to get the result.
 """
 
 import os
 from gtts import gTTS
 
 # all available languages along with their IETF tags
-# print(gtts.lang.tts_langs())
+# print(gtts.lang.tts_langs(tld='com'))
 
 lang = "ru"
 
-with open("text.txt", "r") as text_to_speech:
+with open("text.txt", "r", encoding='utf-8') as text_to_speech:
 
     text_to_speech = text_to_speech.read().replace("\n", " ")
 
