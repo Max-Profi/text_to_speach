@@ -1,4 +1,4 @@
-# text_to_speach
+# Text to speach in Python
 
 Simple text to speech scripts for online and offline usage.
 
