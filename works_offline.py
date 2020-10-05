@@ -1,5 +1,5 @@
 """
-pyttsx3 is a text-to-speech conversion library in Python. Works without internet connection or delay. Compatible with both Python 2 and 3.
+pyttsx3 is a text-to-speech conversion library in Python. Works without internet connection or delay.
 
 https://pypi.org/project/pyttsx3/
 
@@ -16,26 +16,31 @@ engine = pyttsx3.init()
 
 # get speaking rates
 rate = engine.getProperty("rate")
-print("rate:", rate)
+# print("rate:", rate)
+engine.setProperty("rate", 200)  # 200 is default rate
+
 
 # get all voices available
 voices = engine.getProperty("voices")
+# for voice in voices:
+#     print("ID:", voice.id)
+#     print("Gender:", voice.gender)
+engine.setProperty("voice", "english")
+engine.setProperty("voice", "female")  # linux includes only male voices
 
-num = 1
-for i in range(1, len(voices)):
-    print("voice:", voices[i].id, num)
-    num += 1
+# engine.setProperty('voice', voices[0].id)  # changes voices. o for male
+# engine.setProperty('voice', voices[1].id)  # 1 for female
 
-engine.setProperty("rate", 200)  # 200 is default rate
-engine.setProperty("voice", voices[11].id)
-
-text = "Python is a great programming language"
-
-engine.say(text)
-
-engine.runAndWait()
+# change volume
+volume = engine.getProperty("volume")
+engine.setProperty("volume", 1.0)  # setting up volume level  between 0 and 1
 
 
-"""
-say() method adds an utterance to speak to the event queue, while runAndWait() method runs the actual event loop until all commands queued up. So you can call multiple times the say() method and run a single runAndWait() method in the end, in order to hear the synthesis.
-"""
+with open("text.txt") as text:
+    text = text.read().replace("\n", " ")
+
+    # Saving to a file
+    # On linux make sure that 'espeak', 'ffmpeg', 'libespeak1' are installed
+    # sudo apt update && sudo apt install espeak ffmpeg libespeak1
+    engine.save_to_file(text, "offline.mp3")
+    engine.runAndWait()

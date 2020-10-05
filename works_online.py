@@ -4,10 +4,8 @@ gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Go
 https://pypi.org/project/gTTS/
 """
 
-# import os
+import os
 from gtts import gTTS
-
-from playsound import playsound
 
 # all available languages along with their IETF tags
 # print(gtts.lang.tts_langs())
@@ -20,9 +18,7 @@ with open("text.txt", "r") as text_to_speech:
 
     output = gTTS(text=text_to_speech, lang=lang, slow=False)
 
-    output.save("my_file.mp3")
+    output.save("online.mp3")
 
 
-# os.system("start my_file.mp3") to play with default system player
-
-playsound("my_file.mp3")
+os.system("start online.mp3")  # to play with default system player
