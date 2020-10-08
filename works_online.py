@@ -3,7 +3,7 @@ gTTS (Google Text-to-Speech) Python library and CLI tool to interface with Googl
 
 https://pypi.org/project/gTTS/
 
-On Windows you have to run VS Code as administrator. And it takes a long time to create mp3 file.
+On Windows you have to run VS Code as administrator. And it takes a long time to create an mp3 file.
 """
 
 # import os
